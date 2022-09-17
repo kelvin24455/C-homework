@@ -1,0 +1,58 @@
+#include <iostream>
+#define DIF 0.0001
+int main()
+{
+    double x,y ,r, squarecircle, areacircle ;
+
+    printf("<원의 면적 구하기>\n");
+    printf("반지름을 입력하세요:");
+    scanf_s("%lf", &r);
+
+    areacircle = 0;
+
+    for (x = 0; x < r, r>x+DIF ; x = x + DIF) {
+        y = sqrt(r * r - x * x);
+
+
+        squarecircle = DIF*(sqrt(r * r - x * x) + sqrt(r * r - (x + DIF) * (x + DIF)))/2;
+        areacircle += squarecircle ;
+
+    }
+    
+        printf("면적은 %lf 입니다\n",4*areacircle);
+
+
+
+     double a, b, squareellipse, areaellipse;
+     printf("<타원의 면적 구하기>\n");
+     printf("장축 반지름을 입력하세요:");
+     scanf_s("%lf", &a);
+     printf("단축 반지름을 입력하세요:");
+     scanf_s("%lf", &b);
+
+     areaellipse = 0;
+
+     for (x = 0; x<a, a>x + DIF; x = x + DIF) {
+
+         squareellipse = DIF * (sqrt((b * b) - (b * b * x * x) / (a * a)) + sqrt((b * b) - (b * b * (x + DIF) * (x + DIF) / (a * a))))/2;
+         areaellipse += squareellipse;
+     }
+     printf("면적은 %lf 입니다\n", 4 * areaellipse);
+
+
+     double squareparabola, areaparabola, startpoint, endpoint;
+     printf("<y = |5*x*x - 3*x +100| 의 적분 구하기>\n");
+     printf("시작x값을 입력하세요:");
+     scanf_s("%lf", &startpoint);
+     printf("끝x값을 입력하세요:");
+     scanf_s("%lf", &endpoint);
+     areaparabola = 0;
+     
+
+     for (x=0; startpoint<=x<=endpoint && x+DIF<=endpoint; x = x + DIF) {
+
+         squareparabola = DIF * (fabs(5 * x * x - 3 * x + 100) + fabs(5 * (x + DIF) * (x + DIF) - 3 * (x + DIF) + 100))/ 2;
+         areaparabola += squareparabola;
+     }
+     printf("면적은 %lf 입니다\n", areaparabola);
+}
